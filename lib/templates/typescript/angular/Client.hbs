@@ -5,21 +5,14 @@ module {{@root.options.module}} {
     "use strict";
 {{/unless}}
     export class {{clientName}}{{#if @root.options.generateInterface}} implements I{{clientName}}{{/if}} {
-        private baseUri: string;
-        private hostName: string;
-        private scheme: string;
-
         /* @ngInject */
         constructor(
             {{#if @root.options.inject}}
             private {{name}}: {{type}},
             {{/if}}
-            private $http: angular.IHttpService
-        ) {
-            this.hostName = '{{#if @root.options.host}}{{@root.options.host}}{{else}}{{api.host}}{{/if}}';
-            this.scheme = '{{#if @root.options.scheme}}{{@root.options.scheme}}{{else}}http{{/if}}';
-            this.baseUri = this.scheme + '://' + this.hostName {{#api.basePath}}+ '{{.}}'{{/api.basePath}};
-        }
+            private $http: angular.IHttpService,
+            private baseUri: string
+        ) { }
 
     {{#api.operations}}
         /**
