@@ -75,18 +75,18 @@ function wrapHandleBarsContext(context: swaggerGeneratorDef.Context): Promise<sw
 function applyTemplates(context: swaggerGeneratorDef.Context): Promise<swaggerGeneratorDef.Context> {
     let templates: string[] = [];
     if(context.options.singleFile) {
-        templates.push('SingleFile');
+        templates.push('singlefile');
     } else {
-        templates.push('Definition');
+        templates.push('definition');
         if(context.options.templateOptions.generateInterface) {
-            templates.push('Interface');
+            templates.push('interface');
         }
         if(context.options.templateOptions.arguments && context.options.templateOptions.arguments.asInterface) {
-            templates.push('ArgumentInterface');
+            templates.push('argumentinterface');
         }
-        templates.push('Client');
+        templates.push('client');
         if(context.options.templateOptions.generateMock) {
-            templates.push('Mock');
+            templates.push('mock');
         }
     }
     for(let template of templates) {
